@@ -1,0 +1,17 @@
+{
+  "name": "react-homework-template",
+  "homepage": "https://NadiiaChernokur.github.io/campers/",
+  "scripts": {
+    "start": "npm run dev",
+    "test": "react-scripts test",
+    "dev": "vite --host",
+    "build": "vite build",
+    "format": "prettier --write ./src"
+  },
+  "dependencies": {
+    "create-react-app": "^5.0.1",
+    "react": "^18.2.0",
+    "react-redux-toolkit": "^0.0.1-alpha.2",
+    "redax": "^0.0.0"
+  }
+}
