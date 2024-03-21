@@ -23,7 +23,9 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0; */
- 
+ color: #475467;
+ font-weight: 500;
+font-size: 16px;
 
 
 /* &::-webkit-scrollbar {

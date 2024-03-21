@@ -1,5 +1,6 @@
 // import React from 'react';
 
+import { useDispatch } from 'react-redux';
 import {
   CardContainer,
   CardImg,
@@ -15,8 +16,14 @@ import {
   ShowMore,
   UlList,
 } from './AutoCard.styles';
+import { getCampers } from '../redux/operation';
 
 export const AutoCard = () => {
+  const dispatch = useDispatch();
+  const showMore = () => {
+    const res = dispatch(getCampers());
+    console.log(res);
+  };
   return (
     <>
       <CardContainer>
@@ -90,7 +97,7 @@ export const AutoCard = () => {
               <ListText>AC</ListText>
             </List>
           </UlList>
-          <ShowMore>Show more</ShowMore>
+          <ShowMore onClick={showMore}>Show more</ShowMore>
         </InformationContainer>
       </CardContainer>
     </>
