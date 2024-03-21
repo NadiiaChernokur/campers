@@ -7,7 +7,7 @@ axios.defaults.baseURL = `https://${code}.mockapi.io/api`;
 export const getCampers = createAsyncThunk('campers', async (_, thunkAPI) => {
   try {
     const respons = await axios.get('/campers');
-    console.log(respons.data);
+
     return respons.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

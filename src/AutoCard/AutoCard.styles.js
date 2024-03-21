@@ -8,7 +8,9 @@ export const CardContainer = styled.div`
   background: #fff;
   display: flex;
   gap: 24px;
+  margin-bottom: 32px;
 `;
+
 export const CardImg = styled.img`
   border-radius: 10px;
   width: 290px;
@@ -20,7 +22,6 @@ export const InformationContainer = styled.div`
   height: 310px;
   display: flex;
   flex-direction: column;
-  background-color: yellow;
 `;
 
 export const NameDiv = styled.div`
@@ -82,6 +83,7 @@ export const ShowMore = styled.button`
   width: 166px;
   height: 56px;
   background: #e44848;
+  border: none;
 `;
 export const ReviewsStar = styled.p`
   font-weight: 400;
