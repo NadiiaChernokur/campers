@@ -1,20 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-// import {
-//   getAllDiaryInformation,
-//   addDiaryProduct,
-//   deleteDiaryProduct,
-//   addDiaryExercise,
-//   deleteDiaryExercise,
-// } from "./operation";
+import { createSlice } from '@reduxjs/toolkit';
+import { addFavorite, getCampers } from './operation';
 
 const initialState = {
-  consumedProductsArray: [],
-  completedExercisesArray: [],
+  campersArray: [],
+  favoriteArray: [],
   isLoading: false,
   error: null,
-  allDiaryInformation: {},
-  date: "",
 };
 
 const handlePending = (state) => {
@@ -26,75 +17,42 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleGetAllDiaryInformationFulfilled = (state, action) => {
+const handleGetInformationFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.allDiaryInformation = action.payload;
-  state.date = action.payload?.date;
+  state.campersArray = action.payload;
 };
 
-const handleAddDiaryProductsFulfilled = (state, action) => {
+const addFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedProductsArray.push(action.payload);
+  state.favoriteArray.push(action.payload);
 };
-
-const handleDeleteDiaryProductsFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-
-  // Знаходимо індекс видаляємого продукту у масиві
-  const index = state.consumedProductsArray.findIndex(
-    (product) => product._id === action.payload._id
-  );
-
-  // Якщо індекс знайдено, видаляємо продукт із масиву
-  if (index !== -1) {
-    state.consumedProductsArray.splice(index, 1);
-  }
-};
-
-const handleAddDiaryExerciseFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-  state.completedExercisesArray.push(action.payload);
-};
-
-const handleDeleteDiaryExerciseFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-
-  const index = state.completedExercisesArray.findIndex(
-    (product) => product._id === action.payload._id
-  );
-  state.completedExercisesArray.splice(index, 1);
-};
+// const removeFavoriteArrayFulfilled = (state, action) => {
+//   state.isLoading = false;
+//   state.error = null;
+//   state.favoriteArray = state.favoriteArray.filter(
+//     (id) => id !== action.payload
+//   );
+// };
 
 const autoSlice = createSlice({
-  name: "autos",
+  name: 'autos',
   initialState: initialState,
-  extraReducers: (builder) => builder,
-  //   .addCase(getAllDiaryInformation.pending, handlePending)
-  //   .addCase(
-  //     getAllDiaryInformation.fulfilled,
-  //     handleGetAllDiaryInformationFulfilled
-  //   )
-  //   .addCase(getAllDiaryInformation.rejected, handleRejected)
-  //   .addCase(addDiaryProduct.pending, handlePending)
-  //   .addCase(addDiaryProduct.fulfilled, handleAddDiaryProductsFulfilled)
-  //   .addCase(addDiaryProduct.rejected, handleRejected)
-  //   .addCase(deleteDiaryProduct.pending, handlePending)
-  //   .addCase(deleteDiaryProduct.fulfilled, handleDeleteDiaryProductsFulfilled)
-  //   .addCase(deleteDiaryProduct.rejected, handleRejected)
-  //   .addCase(addDiaryExercise.pending, handlePending)
-  //   .addCase(addDiaryExercise.fulfilled, handleAddDiaryExerciseFulfilled)
-  //   .addCase(addDiaryExercise.rejected, handleRejected)
-  //   .addCase(deleteDiaryExercise.pending, handlePending)
-  //   .addCase(
-  //     deleteDiaryExercise.fulfilled,
-  //     handleDeleteDiaryExerciseFulfilled
-  //   )
-  //   .addCase(deleteDiaryExercise.rejected, handleRejected),
+  extraReducers: (builder) =>
+    builder
+      .addCase(getCampers.pending, handlePending)
+      .addCase(getCampers.fulfilled, handleGetInformationFulfilled)
+      .addCase(getCampers.rejected, handleRejected)
+      .addCase(addFavorite.pending, handlePending)
+      .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
+      .addCase(addFavorite.rejected, handleRejected),
+  // .addCase(actionTypes.removeFavorite.pending, handlePending)
+  // .addCase(
+  //   actionTypes.removeFavorite.fulfilled,
+  //   removeFavoriteArrayFulfilled
+  // )
+  // .addCase(actionTypes.removeFavorite.rejected, handleRejected),
 });
 
 export const autoReducer = autoSlice.reducer;
