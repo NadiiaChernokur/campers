@@ -4,7 +4,7 @@ import { Suspense, lazy } from 'react';
 // import CampersPage from './CampersPage';
 
 const MainPage = lazy(() => import('./MainPage/MainPage'));
-const CampersPage = lazy(() => import('./CampersPage'));
+const CampersPage = lazy(() => import('./CampersPage/CampersPage'));
 const Favorits = lazy(() => import('./FavoriteList/FavoritList'));
 
 const App = () => {
