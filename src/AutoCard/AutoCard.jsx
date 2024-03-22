@@ -17,6 +17,7 @@ import {
   ReviewsStar,
   ShowMore,
   UlList,
+  UseHart,
 } from './AutoCard.styles';
 import { getCampers } from '../redux/operation';
 import { useEffect, useState } from 'react';
@@ -25,6 +26,7 @@ import sprite from '../img/svg.svg';
 export const AutoCard = () => {
   const dispatch = useDispatch();
   const [array, setArrey] = useState();
+  const [favor, setFavor] = useState(false);
   const campersArrey = useSelector((state) => state.campersArray);
   // const isLoading = useSelector((state) => state.isLoading);
   // const error = useSelector((state) => state.error);
@@ -43,8 +45,22 @@ export const AutoCard = () => {
 
     return;
   }, [array, campersArrey, dispatch]);
+  useEffect(() => {}, []);
   const addToFavirite = () => {
-    console.log('666666666');
+    if (!favor) {
+      setFavor(true);
+      return;
+    }
+    if (favor) {
+      setFavor(false);
+      return;
+    }
+  };
+
+  const firstLetter = (w) => {
+    if (w) {
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }
   };
 
   return (
@@ -58,11 +74,17 @@ export const AutoCard = () => {
             <NameDiv>
               <Name>{auto.name}</Name>
               <Prise>
-                <p>{auto.price}.00</p>
+                <p>€{auto.price}.00</p>
                 <ButtonAddToFavorite onClick={addToFavirite}>
-                  <svg width="24" height="24">
-                    <use href={`${sprite}#heart`} fill="#32a852"></use>
-                  </svg>
+                  {favor ? (
+                    <svg width="24" height="24">
+                      <UseHart href={`${sprite}#hearts`}></UseHart>
+                    </svg>
+                  ) : (
+                    <svg width="24" height="24">
+                      <UseHart href={`${sprite}#heart`}></UseHart>
+                    </svg>
+                  )}
                 </ButtonAddToFavorite>
               </Prise>
             </NameDiv>
@@ -83,25 +105,25 @@ export const AutoCard = () => {
             <Description>{auto.description}</Description>
             <UlList>
               <List>
-                <svg width="20" height="14">
+                <svg width="20" height="20">
                   <use href={`${sprite}#Users`}></use>
                 </svg>
                 <ListText>{auto.adults} adults</ListText>
               </List>
               <List>
-                <svg width="20" height="14">
+                <svg width="20" height="20">
                   <use href={`${sprite}#nets`}></use>
                 </svg>
-                <ListText>{auto.transmission}</ListText>
+                <ListText>{firstLetter(auto.transmission)}</ListText>
               </List>
               <List>
-                <svg width="20" height="14">
+                <svg width="20" height="20">
                   <use href={`${sprite}#tank`}></use>
                 </svg>
-                <ListText>{auto.engine}</ListText>
+                <ListText>{firstLetter(auto.engine)}</ListText>
               </List>
               <List>
-                <svg width="20" height="14">
+                <svg width="20" height="20">
                   <use href={`${sprite}#Kitchen`}></use>
                 </svg>
                 <p>Kitchen</p>
@@ -118,8 +140,8 @@ export const AutoCard = () => {
                 <ListText>{auto.details?.beds} beds</ListText>
               </List>
               <List>
-                <svg width="20" height="14">
-                  <use href={`${sprite}#blow`} width="20" height="14"></use>
+                <svg width="20" height="20">
+                  <use href={`${sprite}#blow`} width="20" height="20"></use>
                 </svg>
                 <ListText>AC</ListText>
               </List>

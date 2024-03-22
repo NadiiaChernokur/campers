@@ -37,6 +37,8 @@ export const NameDiv = styled.div`
 export const Name = styled.p`
   font-weight: 600;
   font-size: 24px;
+  color: #101828;
+  line-height: 125%;
 `;
 
 export const Prise = styled.div`
@@ -45,10 +47,13 @@ export const Prise = styled.div`
   font-weight: 600;
   font-size: 24px;
   align-items: center;
+  color: #101828;
+  line-height: 125%;
 `;
 export const Reviews = styled.div`
   display: flex;
   margin-bottom: 24px;
+  gap: 16px;
 `;
 export const Description = styled.p`
   font-size: 16px;
@@ -69,9 +74,10 @@ export const Description = styled.p`
 `;
 export const List = styled.li`
   display: flex;
+  gap: 8px;
   border-radius: 100px;
   padding: 12px 18px;
-
+  align-items: center;
   height: 44px;
   background: #f2f4f7;
 `;
@@ -81,6 +87,9 @@ export const UlList = styled.ul`
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #101828;
 `;
 export const ShowMore = styled.button`
   border-radius: 200px;
@@ -105,4 +114,10 @@ export const ListText = styled.p`
 export const ButtonAddToFavorite = styled.button`
   background: none;
   border: none;
+`;
+export const UseHart = styled.use`
+  background: aqua;
+  background-color: aqua;
+  fill: aqua;
+  /* filter: blur(aqua);  */
 `;
