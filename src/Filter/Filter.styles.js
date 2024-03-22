@@ -31,6 +31,7 @@ export const Equipment = styled.div`
   border-top: 1px solid rgba(16, 24, 40, 0.2);
   padding-top: 24px;
   margin-bottom: 32px;
+  color: #101828;
 `;
 export const LocationDiv = styled.div`
   display: flex;
