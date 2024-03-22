@@ -2,6 +2,7 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  ButtonAddToFavorite,
   CardContainer,
   CardImg,
   CardImgContainer,
@@ -19,7 +20,7 @@ import {
 } from './AutoCard.styles';
 import { getCampers } from '../redux/operation';
 import { useEffect, useState } from 'react';
-import sprite from '../img/LinkedSprite.svg';
+import sprite from '../img/svg.svg';
 
 export const AutoCard = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ export const AutoCard = () => {
 
     return;
   }, [array, campersArrey, dispatch]);
+  const addToFavirite = () => {
+    console.log('666666666');
+  };
 
   return (
     <>
@@ -54,24 +58,24 @@ export const AutoCard = () => {
             <NameDiv>
               <Name>{auto.name}</Name>
               <Prise>
-                <p>{auto.price}</p>
-                <button>
-                  <svg width="20" height="14">
-                    <use href={`${sprite}#heart`} fill="none"></use>
+                <p>{auto.price}.00</p>
+                <ButtonAddToFavorite onClick={addToFavirite}>
+                  <svg width="24" height="24">
+                    <use href={`${sprite}#heart`} fill="#32a852"></use>
                   </svg>
-                </button>
+                </ButtonAddToFavorite>
               </Prise>
             </NameDiv>
             <Reviews>
               <ReviewsStar>
                 <svg width="20" height="14">
-                  <use href={`${sprite}#Users`}></use>
+                  <use href={`${sprite}#Rating`}></use>
                 </svg>
                 {auto.rating}({auto.reviews?.length} Reviews)
               </ReviewsStar>
               <p>
                 <svg width="20" height="14">
-                  <use href={`${sprite}#map`} fill="none"></use>
+                  <use href={`${sprite}#map`}></use>
                 </svg>
                 {auto.location}
               </p>
@@ -86,19 +90,19 @@ export const AutoCard = () => {
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use href={`${sprite}#nets`} fill="none"></use>
+                  <use href={`${sprite}#nets`}></use>
                 </svg>
                 <ListText>{auto.transmission}</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use href={`${sprite}#camper`} fill="none"></use>
+                  <use href={`${sprite}#tank`}></use>
                 </svg>
                 <ListText>{auto.engine}</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use href={`${sprite}#Kichen`} fill="none"></use>
+                  <use href={`${sprite}#Kitchen`}></use>
                 </svg>
                 <p>Kitchen</p>
               </List>
@@ -115,12 +119,7 @@ export const AutoCard = () => {
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use
-                    href={`${sprite}#blow`}
-                    fill="none"
-                    width="20"
-                    height="14"
-                  ></use>
+                  <use href={`${sprite}#blow`} width="20" height="14"></use>
                 </svg>
                 <ListText>AC</ListText>
               </List>

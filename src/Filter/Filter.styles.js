@@ -11,7 +11,7 @@ export const CheckboxLabel = styled.label`
   display: block;
   border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 10px;
-  padding: 17px 27px;
+  padding: 17px 12px;
   width: 113px;
   height: 95px;
   text-align: center;
@@ -66,4 +66,8 @@ export const SearchButton = styled.button`
   width: 173px;
   height: 56px;
   background: #e44848;
+  color: #fff;
+`;
+export const Svg = styled.svg`
+  width: 15px;
 `;
