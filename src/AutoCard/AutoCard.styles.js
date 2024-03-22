@@ -44,6 +44,7 @@ export const Prise = styled.div`
   gap: 10px;
   font-weight: 600;
   font-size: 24px;
+  align-items: center;
 `;
 export const Reviews = styled.div`
   display: flex;
@@ -88,6 +89,7 @@ export const ShowMore = styled.button`
   height: 56px;
   background: #e44848;
   border: none;
+  color: #fff;
 `;
 export const ReviewsStar = styled.p`
   font-weight: 400;
@@ -99,4 +101,8 @@ export const ReviewsStar = styled.p`
 export const ListText = styled.p`
   font-weight: 500;
   font-size: 16px;
+`;
+export const ButtonAddToFavorite = styled.button`
+  background: none;
+  border: none;
 `;
