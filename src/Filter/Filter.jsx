@@ -12,7 +12,7 @@ import {
   Type,
   VehicleEquipment,
 } from './Filter.styles';
-
+import sprite from '../img/LinkedSprite.svg';
 export const Filter = () => {
   return (
     <>
@@ -27,35 +27,35 @@ export const Filter = () => {
           <CheckboxLabel htmlFor="AC">
             <CheckboxInput type="checkbox" id="AC"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#autofool`}></use>
             </svg>
             <p>AC</p>
           </CheckboxLabel>
           <CheckboxLabel htmlFor="Automatic">
             <CheckboxInput type="checkbox" id="Automatic"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#blow`}></use>
             </svg>
             <p>Automatic</p>
           </CheckboxLabel>
           <CheckboxLabel htmlFor="Kitchen">
             <CheckboxInput type="checkbox" id="Kitchen"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#nets`}></use>
             </svg>
             <p>Kitchen</p>
           </CheckboxLabel>
           <CheckboxLabel htmlFor="TV">
             <CheckboxInput type="checkbox" id="TV"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#tel`}></use>
             </svg>
             <p>TV</p>
           </CheckboxLabel>
           <CheckboxLabel htmlFor="Shower/WC">
             <CheckboxInput type="checkbox" id="Shower/WC"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#dusch`}></use>
             </svg>
             <p>Shower/WC</p>
           </CheckboxLabel>
@@ -65,7 +65,7 @@ export const Filter = () => {
           <CheckboxLabel htmlFor="Van">
             <CheckboxInput type="checkbox" id="Van"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#auto`}></use>
             </svg>
             <p>Van</p>
           </CheckboxLabel>
@@ -75,14 +75,14 @@ export const Filter = () => {
               id="Fully-Integrated"
             ></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#autodoor`}></use>
             </svg>
             <p>Fully Integrated</p>
           </CheckboxLabel>
           <CheckboxLabel htmlFor="Alcove">
             <CheckboxInput type="checkbox" id="Alcove"></CheckboxInput>
             <svg width="14" height="14">
-              <use></use>
+              <use href={`${sprite}#autofool`}></use>
             </svg>
             <p>Alcove</p>
           </CheckboxLabel>

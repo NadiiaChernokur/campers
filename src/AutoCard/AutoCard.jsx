@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   CardContainer,
   CardImg,
+  CardImgContainer,
   Description,
   InformationContainer,
   List,
@@ -18,6 +19,7 @@ import {
 } from './AutoCard.styles';
 import { getCampers } from '../redux/operation';
 import { useEffect, useState } from 'react';
+import sprite from '../img/LinkedSprite.svg';
 
 export const AutoCard = () => {
   const dispatch = useDispatch();
@@ -40,11 +42,14 @@ export const AutoCard = () => {
 
     return;
   }, [array, campersArrey, dispatch]);
+
   return (
     <>
       {array?.map((auto) => (
         <CardContainer key={auto.id}>
-          <CardImg src="" alt="" />
+          <CardImgContainer>
+            <CardImg src={auto.gallery?.[0]} alt={auto.name} />
+          </CardImgContainer>
           <InformationContainer>
             <NameDiv>
               <Name>{auto.name}</Name>
@@ -52,7 +57,7 @@ export const AutoCard = () => {
                 <p>{auto.price}</p>
                 <button>
                   <svg width="20" height="14">
-                    <use></use>
+                    <use href={`${sprite}#heart`} fill="none"></use>
                   </svg>
                 </button>
               </Prise>
@@ -60,56 +65,62 @@ export const AutoCard = () => {
             <Reviews>
               <ReviewsStar>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#Users`}></use>
                 </svg>
-                {auto.rating}({} Reviews)
+                {auto.rating}({auto.reviews?.length} Reviews)
               </ReviewsStar>
               <p>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#map`} fill="none"></use>
                 </svg>
-                Kyiv, Ukraine
+                {auto.location}
               </p>
             </Reviews>
-            <Description>
-              Embrace simplicity and freedom with the Mavericks panel truck, an
-              ideal choice for solo travelers or couples seeking a compact and
-              efficient way to explore the open roads.
-            </Description>
+            <Description>{auto.description}</Description>
             <UlList>
               <List>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#Users`}></use>
                 </svg>
-                <ListText>2 adults</ListText>
+                <ListText>{auto.adults} adults</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#nets`} fill="none"></use>
                 </svg>
-                <ListText>Automatic</ListText>
+                <ListText>{auto.transmission}</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#camper`} fill="none"></use>
                 </svg>
-                <ListText>Petrol</ListText>
+                <ListText>{auto.engine}</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use href={`${sprite}#Kichen`} fill="none"></use>
                 </svg>
                 <p>Kitchen</p>
               </List>
               <List>
-                <svg width="20" height="14">
-                  <use></use>
+                <svg width="20" height="20">
+                  <use
+                    href={`${sprite}#bad`}
+                    width="20"
+                    height="20"
+                    fill="none"
+                  ></use>
                 </svg>
-                <ListText>1 beds</ListText>
+                <ListText>{auto.details?.beds} beds</ListText>
               </List>
               <List>
                 <svg width="20" height="14">
-                  <use></use>
+                  <use
+                    href={`${sprite}#blow`}
+                    fill="none"
+                    width="20"
+                    height="14"
+                  ></use>
                 </svg>
                 <ListText>AC</ListText>
               </List>

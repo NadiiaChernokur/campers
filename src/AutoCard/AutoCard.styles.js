@@ -15,8 +15,12 @@ export const CardImg = styled.img`
   border-radius: 10px;
   width: 290px;
   height: 310px;
-  background-color: blue;
 `;
+export const CardImgContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
 export const InformationContainer = styled.div`
   width: 526px;
   height: 310px;
