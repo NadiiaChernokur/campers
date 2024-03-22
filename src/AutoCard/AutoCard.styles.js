@@ -54,6 +54,10 @@ export const Reviews = styled.div`
   display: flex;
   margin-bottom: 24px;
   gap: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #101828;
+  text-decoration-skip-ink: none;
 `;
 export const Description = styled.p`
   font-size: 16px;

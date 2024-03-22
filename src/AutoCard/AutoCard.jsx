@@ -22,16 +22,22 @@ import {
 import { getCampers } from '../redux/operation';
 import { useEffect, useState } from 'react';
 import sprite from '../img/svg.svg';
+import ShowMoreCard from '../ShowMoreCard/ShowMoreCard';
 
 export const AutoCard = () => {
   const dispatch = useDispatch();
   const [array, setArrey] = useState();
   const [favor, setFavor] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAuto, setSelectedAuto] = useState(null);
   const campersArrey = useSelector((state) => state.campersArray);
   // const isLoading = useSelector((state) => state.isLoading);
   // const error = useSelector((state) => state.error);
-  console.log(array);
-  const showMore = () => {};
+
+  const showMore = (auto) => {
+    setSelectedAuto(auto);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     if (!array) {
@@ -61,6 +67,9 @@ export const AutoCard = () => {
     if (w) {
       return w.charAt(0).toUpperCase() + w.slice(1);
     }
+  };
+  const onClose = () => {
+    return setIsModalOpen(false);
   };
 
   return (
@@ -146,10 +155,11 @@ export const AutoCard = () => {
                 <ListText>AC</ListText>
               </List>
             </UlList>
-            <ShowMore onClick={showMore}>Show more</ShowMore>
+            <ShowMore onClick={() => showMore(auto)}>Show more</ShowMore>
           </InformationContainer>
         </CardContainer>
       ))}
+      {isModalOpen && <ShowMoreCard onClose={onClose} auto={selectedAuto} />}
     </>
   );
 };

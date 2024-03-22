@@ -6,16 +6,85 @@ export const ModalBackground = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(17, 18, 19, 0.4);
   overflow: auto;
 `;
 
 export const ModalContainer = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  border-radius: 12px;
-  background: #10100f;
+  background: #fff;
   margin: 10% auto;
-  width: 694px;
-  height: 550px;
+  border-radius: 20px;
+  padding: 40px;
+  width: 982px;
   margin: 10% auto;
+`;
+
+export const ModalName = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 24px;
+  color: #101828;
+  margin-bottom: 10px;
+`;
+export const CenterDivButton = styled.div`
+  display: flex;
+`;
+export const OnCloseButton = styled.button`
+  width: 32px;
+  height: 32px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: none;
+`;
+export const ReviewsModal = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #101828;
+`;
+export const ModalPrice = styled.p`
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+  color: #101828;
+  margin-bottom: 24px;
+`;
+export const ModalImg = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+`;
+
+export const ModalDescription = styled.p`
+  margin-bottom: 44px;
+`;
+export const ModalButtonsDiv = styled.div`
+  display: flex;
+  gap: 40px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  margin-bottom: 24px;
+`;
+
+export const ModalButton = styled.button`
+  background: none;
+  border: none;
+`;
+export const BottomOfTheModal = styled.div`
+  display: flex;
+  gap: 24px;
+  background-color: beige;
+  border-top: 1px solid rgba(16, 24, 40, 0.2);
+  padding-top: 44px;
 `;
