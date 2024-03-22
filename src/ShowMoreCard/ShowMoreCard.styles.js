@@ -84,7 +84,6 @@ export const ModalButton = styled.button`
 export const BottomOfTheModal = styled.div`
   display: flex;
   gap: 24px;
-  background-color: beige;
   border-top: 1px solid rgba(16, 24, 40, 0.2);
   padding-top: 44px;
 `;

@@ -1,4 +1,4 @@
 const BookForm = () => {
-  return <div></div>;
+  return <div width="448" height="400"></div>;
 };
 export default BookForm;
