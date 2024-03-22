@@ -15,6 +15,17 @@ const Features = ({ auto }) => {
       return w.charAt(0).toUpperCase() + w.slice(1);
     }
   };
+  const splitFunction = (v) => {
+    const parts = v.split('m');
+    const formatted = parts[0] + ' m';
+    return formatted;
+  };
+
+  const tankFunction = (v) => {
+    const parts = v.split('l');
+    const formatted = parts[0] + ' l';
+    return formatted;
+  };
   return (
     <FeaturesContainer>
       <FeaturesUlList>
@@ -149,19 +160,19 @@ const Features = ({ auto }) => {
         </Details>
         <Details>
           <p>Length</p>
-          <p>{auto.length}</p>
+          <p>{splitFunction(auto.length)}</p>
         </Details>
         <Details>
           <p>Width</p>
-          <p>{auto.width}</p>
+          <p>{splitFunction(auto.width)}</p>
         </Details>
         <Details>
           <p>Height</p>
-          <p>{auto.height}</p>
+          <p>{splitFunction(auto.height)}</p>
         </Details>
         <Details>
           <p>Tank</p>
-          <p>{auto.tank}</p>
+          <p>{tankFunction(auto.tank)}</p>
         </Details>
         <Details>
           <p>Consumption</p>

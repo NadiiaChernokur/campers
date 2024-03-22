@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 export const FeaturesContainer = styled.div`
   width: 430px;
-  background-color: aqua;
 `;
 
 export const FeaturesUlList = styled.ul`
@@ -40,6 +39,10 @@ export const DetailsDiv = styled.div`
   flex-direction: column;
   gap: 14px;
   margin-top: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  color: #101828;
 `;
 export const Details = styled.div`
   display: flex;

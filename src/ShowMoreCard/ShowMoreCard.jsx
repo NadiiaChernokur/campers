@@ -13,10 +13,22 @@ import {
 } from './ShowMoreCard.styles';
 import sprite from '../img/svg.svg';
 import Features from '../Features/Features';
-import BookForm from './BookForm/BookForm';
+
+import { useState } from 'react';
+import BookForm from '../BookForm/BookForm';
+import Reviews from '../Reviews/Reviews';
 
 const ShowMoreCard = ({ onClose, auto }) => {
-  console.log(auto);
+  const [features, setFeatures] = useState(true);
+  const [reviews, setReviews] = useState(false);
+  const onFeatures = () => {
+    setFeatures(true);
+    setReviews(false);
+  };
+  const onReviews = () => {
+    setReviews(true);
+    setFeatures(false);
+  };
   return (
     <ModalBackground>
       <ModalContainer key={auto.id}>
@@ -65,14 +77,15 @@ const ShowMoreCard = ({ onClose, auto }) => {
         </ModalImg>
         <ModalDescription>{auto.description}</ModalDescription>
         <ModalButtonsDiv>
-          <ModalButton>Features</ModalButton>
-          <ModalButton>Reviews</ModalButton>
+          <ModalButton onClick={onFeatures}>Features</ModalButton>
+          <ModalButton onClick={onReviews}>Reviews</ModalButton>
         </ModalButtonsDiv>
         <BottomOfTheModal>
           <div>
-            <Features auto={auto} />
+            {features && <Features auto={auto} />}
+            {reviews && <Reviews auto={auto} />}
           </div>
-          <div style={{ background: 'red' }} width="448">
+          <div style={{ background: 'red' }} width="448" height="400">
             <BookForm />
           </div>
         </BottomOfTheModal>
