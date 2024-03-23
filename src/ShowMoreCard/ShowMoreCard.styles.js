@@ -87,3 +87,9 @@ export const BottomOfTheModal = styled.div`
   border-top: 1px solid rgba(16, 24, 40, 0.2);
   padding-top: 44px;
 `;
+
+export const ShowModalImg = styled.img`
+  width: 290px;
+  height: 310px;
+  border-radius: 10px;
+`;
