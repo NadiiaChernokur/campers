@@ -10,6 +10,7 @@ import {
   ModalPrice,
   OnCloseButton,
   ReviewsModal,
+  ShowModalImg,
 } from './ShowMoreCard.styles';
 import sprite from '../img/svg.svg';
 import Features from '../Features/Features';
@@ -56,24 +57,9 @@ const ShowMoreCard = ({ onClose, auto }) => {
         </ReviewsModal>
         <ModalPrice>€{auto.price}.00</ModalPrice>
         <ModalImg>
-          <img
-            src={auto.gallery?.[0]}
-            alt={auto.name}
-            width="290"
-            height="310"
-          ></img>
-          <img
-            src={auto.gallery?.[1]}
-            alt={auto.name}
-            width="290"
-            height="310"
-          ></img>
-          <img
-            src={auto.gallery?.[2]}
-            alt={auto.name}
-            height="310"
-            width="290"
-          ></img>
+          <ShowModalImg src={auto.gallery?.[0]} alt={auto.name}></ShowModalImg>
+          <ShowModalImg src={auto.gallery?.[1]} alt={auto.name}></ShowModalImg>
+          <ShowModalImg src={auto.gallery?.[2]} alt={auto.name}></ShowModalImg>
         </ModalImg>
         <ModalDescription>{auto.description}</ModalDescription>
         <ModalButtonsDiv>
@@ -85,7 +71,7 @@ const ShowMoreCard = ({ onClose, auto }) => {
             {features && <Features auto={auto} />}
             {reviews && <Reviews auto={auto} />}
           </div>
-          <div style={{ background: 'red' }} width="448" height="400">
+          <div>
             <BookForm />
           </div>
         </BottomOfTheModal>
