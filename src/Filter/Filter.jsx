@@ -13,8 +13,10 @@ import {
 
 import sprite from '../img/svg.svg';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { newFilterArray } from '../redux/operation';
 export const Filter = () => {
+  const dispatch = useDispatch();
   // const [acChecked, setAcChecked] = useState(false);
   // const [automaticChecked, setAutomaticChecked] = useState(false);
   // const [kitchenChecked, setKitchen] = useState(false);
@@ -25,7 +27,7 @@ export const Filter = () => {
   const [alcoveChecked, setAlcove] = useState(false);
   const [filterArray, setFilterArray] = useState([]);
   const campersArrey = useSelector((state) => state.campersArray);
-
+  const totalArrey = useSelector((state) => state.totalCampers);
   const [filteredData, setFilteredData] = useState([]);
 
   const [filters, setFilters] = useState({
@@ -56,39 +58,53 @@ export const Filter = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    let filteredArray = [];
-
+    let Array1 = [];
+    let Array2 = [];
+    let Array3 = [];
+    let Array4 = [];
+    let Array5 = [];
+    console.log(Array1);
     if (filters.acChecked) {
-      const acArray = campersArrey.filter(
-        (auto) => auto.details.airConditioner > 0
-      );
-      filteredArray = filteredArray.concat(acArray);
+      Array1 = totalArrey.filter((auto) => auto.details.airConditioner > 0);
+      console.log(Array1);
     }
     if (filters.automaticChecked) {
-      const acArray = campersArrey.filter(
-        (auto) => auto.transmission === 'automatic'
-      );
-      filteredArray = filteredArray.concat(acArray);
+      Array2 = totalArrey.filter((auto) => auto.transmission === 'automatic');
+      console.log(Array2);
     }
 
     if (filters.kitchenChecked) {
-      const acArray = campersArrey.filter((auto) => auto.details.kitchen > 0);
-      filteredArray = filteredArray.concat(acArray);
+      Array3 = totalArrey.filter((auto) => auto.details.kitchen > 0);
+      console.log(Array3);
     }
     if (filters.tvChecked) {
-      const acArray = campersArrey.filter((auto) => auto.details.TV > 0);
-      filteredArray = filteredArray.concat(acArray);
+      Array4 = totalArrey.filter((auto) => auto.details.TV > 0);
+      console.log(Array4);
     }
     if (filters.showerChecked) {
-      const acArray = campersArrey.filter((auto) => auto.details.bathroom > 0);
-      filteredArray = filteredArray.concat(acArray);
+      Array5 = totalArrey.filter((auto) => auto.details.bathroom > 0);
+      console.log(Array5);
     }
 
-    console.log(filteredArray);
-    // setFilteredData(commonElements);
+    const commonElements = totalArrey?.filter(
+      (item) =>
+        (!Array1.length ||
+          Array1.some((element) => element._id === item._id)) &&
+        (!Array2.length ||
+          Array2.some((element) => element._id === item._id)) &&
+        (!Array3.length ||
+          Array3.some((element) => element._id === item._id)) &&
+        (!Array4.length ||
+          Array4.some((element) => element._id === item._id)) &&
+        (!Array5.length || Array5.some((element) => element._id === item._id))
+    );
+    console.log(commonElements);
+    setFilteredData(commonElements);
   };
+
   useEffect(() => {
     console.log(filteredData);
+    dispatch(newFilterArray(filteredData));
   }, [filteredData]);
   return (
     <>
@@ -300,3 +316,31 @@ export const Filter = () => {
 //     (!Array4 ? [] : Array4.some((element) => element._id === item._id)) &&
 //     (!Array5 ? [] : Array5.some((element) => element._id === item._id))
 // );
+
+// if (filters.acChecked) {
+//   const acArray = campersArrey.filter(
+//     (auto) => auto.details.airConditioner > 0
+//   );
+//   filteredArray = filteredArray.concat(acArray);
+// }
+// if (filters.automaticChecked) {
+//   const acArray = campersArrey.filter(
+//     (auto) => auto.transmission === 'automatic'
+//   );
+//   filteredArray = filteredArray.concat(acArray);
+// }
+
+// if (filters.kitchenChecked) {
+//   const acArray = campersArrey.filter((auto) => auto.details.kitchen > 0);
+//   filteredArray = filteredArray.concat(acArray);
+// }
+// if (filters.tvChecked) {
+//   const acArray = campersArrey.filter((auto) => auto.details.TV > 0);
+//   filteredArray = filteredArray.concat(acArray);
+// }
+// if (filters.showerChecked) {
+//   const acArray = campersArrey.filter((auto) => auto.details.bathroom > 0);
+//   filteredArray = filteredArray.concat(acArray);
+// }
+
+// console.log(filteredArray);

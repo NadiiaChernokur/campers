@@ -55,3 +55,10 @@ export const emptyArray = () => {
     payload: [],
   };
 };
+
+export const newFilterArray = (data) => {
+  return {
+    type: 'newFilterArray',
+    payload: data,
+  };
+};

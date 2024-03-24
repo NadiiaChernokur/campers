@@ -3,6 +3,7 @@ import {
   addFavorite,
   emptyArray,
   getCampers,
+  newFilterArray,
   removeFavoriteItem,
   totalCampers,
 } from './operation';
@@ -11,6 +12,7 @@ const initialState = {
   campersArray: [],
   favoriteArray: [],
   totalCampers: [],
+  newFilterArray: [],
   isLoading: false,
   error: null,
   isLoadingTotal: false,
@@ -36,7 +38,7 @@ const handleRejectedTotal = (state, action) => {
 const handleGetInformationFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  // state.campersArray = [];
+
   state.campersArray.push(...action.payload);
 };
 const removeArray = (state, action) => {
@@ -45,10 +47,12 @@ const removeArray = (state, action) => {
 const handleTotalCampers = (state, action) => {
   state.isLoading = false;
   state.error = null;
-
   state.totalCampers = action.payload;
 };
-
+const newFilterArrayCreate = (state, action) => {
+  console.log(action.payload);
+  state.newFilterArray = action.payload;
+};
 const addFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
@@ -80,7 +84,8 @@ const autoSlice = createSlice({
       .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
       .addCase(addFavorite.rejected, handleRejected)
       .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled)
-      .addCase(emptyArray().type, removeArray),
+      .addCase(emptyArray().type, removeArray)
+      .addCase(newFilterArray().type, newFilterArrayCreate),
 
   // .addCase(removeFavorite.pending, handlePending)
   // .addCase(removeFavorite.fulfilled, removeFavoriteArrayFulfilled)
