@@ -78,7 +78,7 @@ export const AutoCard = () => {
               <NameDiv>
                 <Name>{auto.name}</Name>
                 <Prise>
-                  <p>€{auto.price}.00</p>
+                  <p>€{auto.price},00</p>
                   <ButtonAddToFavorite onClick={() => addToFavirite(auto._id)}>
                     {isFavorite(auto._id) ? (
                       <svg width="24" height="24">
