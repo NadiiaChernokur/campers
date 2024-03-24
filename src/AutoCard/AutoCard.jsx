@@ -26,9 +26,9 @@ import { useEffect, useState } from 'react';
 import sprite from '../img/svg.svg';
 import ShowMoreCard from '../ShowMoreCard/ShowMoreCard';
 
-export const AutoCard = () => {
+export const AutoCard = ({ page }) => {
   const dispatch = useDispatch();
-  const [array, setArrey] = useState();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAuto, setSelectedAuto] = useState(null);
   const [favorites, setFavorites] = useState([]);
@@ -38,19 +38,6 @@ export const AutoCard = () => {
     setSelectedAuto(auto);
     setIsModalOpen(true);
   };
-
-  useEffect(() => {
-    if (!array) {
-      dispatch(getCampers());
-    }
-
-    if (campersArrey) {
-      setArrey(campersArrey);
-      return;
-    }
-
-    return;
-  }, [array, campersArrey, dispatch]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -83,7 +70,7 @@ export const AutoCard = () => {
   const isFavorite = (id) => favorites.includes(id);
   return (
     <>
-      {array?.map((auto) => (
+      {campersArrey?.map((auto) => (
         <CardContainer key={auto._id}>
           <CardImgContainer>
             <CardImg src={auto.gallery?.[0]} alt={auto.name} />
