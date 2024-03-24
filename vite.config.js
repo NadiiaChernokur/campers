@@ -7,10 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       src: '/src',
-      components: '/src/components',
-      pages: '/src/pages',
-      assets: '/src/assets',
     },
   },
-  base: '/campers',
+  base: '/',
 });
