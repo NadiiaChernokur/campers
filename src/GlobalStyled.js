@@ -2,27 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
-/* :root {
-  colors
-  --black-color: #040404;
-  --orange-color: #E6533C;
-  --orange-light-color: #EF8964;
-  --white-color: #EFEDE8; 
-  --grey-color: #636366;
-  --light-grey-color: rgba(239, 237, 232, 0.5);
-  --more-light-grey-color: rgba(239, 237, 232, 0.30); } */
+
 
 body {
-  /* background-size: auto 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: var(--black-color);
-  width: 100%;
-  height: 100vh;
-  margin: 0; */
+
  color: #475467;
  font-weight: 500;
 font-size: 16px;
@@ -30,14 +13,6 @@ font-size: 16px;
 
 
 
-/* &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #000000, #EF8964, #000000);
-    border-radius: 12px;
-  } */
 
 }
 
