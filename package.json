@@ -7,8 +7,9 @@
   "scripts": {
     "start": "npm run dev",
     "test": "react-scripts test",
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "format": "prettier --write ./src",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "clean": "your-clean-command-here"
