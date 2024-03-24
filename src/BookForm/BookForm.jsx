@@ -14,10 +14,9 @@ import {
 
 const BookForm = () => {
   const validationSchema = Yup.object({
-    name: Yup.string().required('Name is required').min(2, 'Too Short!'),
+    name: Yup.string().required('Name is required'),
     email: Yup.string()
       .email('Invalid email address')
-      .min(2, 'Too Short!')
       .required('Email is required'),
     date: Yup.date().required('Date is required'),
   });

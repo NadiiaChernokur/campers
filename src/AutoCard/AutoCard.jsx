@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ButtonAddToFavorite,
@@ -19,7 +17,11 @@ import {
   UlList,
   UseHart,
 } from './AutoCard.styles';
-import { getCampers } from '../redux/operation';
+import {
+  addFavorite,
+  getCampers,
+  removeFavoriteItem,
+} from '../redux/operation';
 import { useEffect, useState } from 'react';
 import sprite from '../img/svg.svg';
 import ShowMoreCard from '../ShowMoreCard/ShowMoreCard';
@@ -27,12 +29,10 @@ import ShowMoreCard from '../ShowMoreCard/ShowMoreCard';
 export const AutoCard = () => {
   const dispatch = useDispatch();
   const [array, setArrey] = useState();
-  const [favor, setFavor] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAuto, setSelectedAuto] = useState(null);
+  const [favorites, setFavorites] = useState([]);
   const campersArrey = useSelector((state) => state.campersArray);
-  // const isLoading = useSelector((state) => state.isLoading);
-  // const error = useSelector((state) => state.error);
 
   const showMore = (auto) => {
     setSelectedAuto(auto);
@@ -51,16 +51,25 @@ export const AutoCard = () => {
 
     return;
   }, [array, campersArrey, dispatch]);
-  useEffect(() => {}, []);
-  const addToFavirite = () => {
-    if (!favor) {
-      setFavor(true);
-      return;
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    setFavorites(storedFavorites);
+  }, []);
+
+  const addToFavirite = (id) => {
+    const updatedFavorites = [...favorites];
+    const index = updatedFavorites.indexOf(id);
+    if (index !== -1) {
+      updatedFavorites.splice(index, 1);
+      dispatch(removeFavoriteItem(id));
+    } else {
+      updatedFavorites.push(id);
+      dispatch(addFavorite(id));
     }
-    if (favor) {
-      setFavor(false);
-      return;
-    }
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   const firstLetter = (w) => {
@@ -71,11 +80,11 @@ export const AutoCard = () => {
   const onClose = () => {
     return setIsModalOpen(false);
   };
-
+  const isFavorite = (id) => favorites.includes(id);
   return (
     <>
       {array?.map((auto) => (
-        <CardContainer key={auto.id}>
+        <CardContainer key={auto._id}>
           <CardImgContainer>
             <CardImg src={auto.gallery?.[0]} alt={auto.name} />
           </CardImgContainer>
@@ -84,8 +93,8 @@ export const AutoCard = () => {
               <Name>{auto.name}</Name>
               <Prise>
                 <p>€{auto.price}.00</p>
-                <ButtonAddToFavorite onClick={addToFavirite}>
-                  {favor ? (
+                <ButtonAddToFavorite onClick={() => addToFavirite(auto._id)}>
+                  {isFavorite(auto._id) ? (
                     <svg width="24" height="24">
                       <UseHart href={`${sprite}#hearts`}></UseHart>
                     </svg>

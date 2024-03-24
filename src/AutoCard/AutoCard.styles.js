@@ -103,6 +103,10 @@ export const ShowMore = styled.button`
   background: #e44848;
   border: none;
   color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+
+  letter-spacing: -0.01em;
 `;
 export const ReviewsStar = styled.p`
   font-weight: 400;

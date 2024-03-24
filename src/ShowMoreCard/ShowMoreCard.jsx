@@ -30,8 +30,18 @@ const ShowMoreCard = ({ onClose, auto }) => {
     setReviews(true);
     setFeatures(false);
   };
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  });
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
   return (
-    <ModalBackground>
+    <ModalBackground onClick={handleBackgroundClick}>
       <ModalContainer key={auto.id}>
         <ModalName>
           <p>{auto.name}</p>
@@ -63,8 +73,18 @@ const ShowMoreCard = ({ onClose, auto }) => {
         </ModalImg>
         <ModalDescription>{auto.description}</ModalDescription>
         <ModalButtonsDiv>
-          <ModalButton onClick={onFeatures}>Features</ModalButton>
-          <ModalButton onClick={onReviews}>Reviews</ModalButton>
+          <ModalButton
+            onClick={onFeatures}
+            style={{ borderBottom: features ? '5px solid #e44848' : 'none' }}
+          >
+            Features
+          </ModalButton>
+          <ModalButton
+            onClick={onReviews}
+            style={{ borderBottom: reviews ? '5px solid #e44848' : 'none' }}
+          >
+            Reviews
+          </ModalButton>
         </ModalButtonsDiv>
         <BottomOfTheModal>
           <div>

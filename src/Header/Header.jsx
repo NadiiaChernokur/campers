@@ -9,7 +9,7 @@ const Header = () => {
           <svg width={10} height={10}>
             <use></use>
           </svg>
-          <p>Booking campers</p>
+          <NavLink to="/">Booking campers</NavLink>
           <svg width={10} height={10}>
             <use></use>
           </svg>
