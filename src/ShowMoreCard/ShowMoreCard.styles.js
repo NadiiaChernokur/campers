@@ -7,16 +7,29 @@ export const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(17, 18, 19, 0.4);
-  overflow: auto;
 `;
 
 export const ModalContainer = styled.div`
   background: #fff;
-  margin: 10% auto;
   border-radius: 20px;
   padding: 40px;
   width: 982px;
-  margin: 10% auto;
+  height: 720px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 264px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #d9d9d9;
+  }
 `;
 
 export const ModalName = styled.div`
@@ -74,12 +87,13 @@ export const ModalButtonsDiv = styled.div`
   font-size: 20px;
   line-height: 120%;
   color: #101828;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 `;
 
 export const ModalButton = styled.button`
   background: none;
   border: none;
+  padding-bottom: 24px;
 `;
 export const BottomOfTheModal = styled.div`
   display: flex;
@@ -91,5 +105,4 @@ export const BottomOfTheModal = styled.div`
 export const ShowModalImg = styled.img`
   width: 290px;
   height: 310px;
-  border-radius: 10px;
 `;
